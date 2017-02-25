@@ -46,7 +46,7 @@ RUBY_GC_MALLOC_LIMIT=59000000
 RUBY_FREE_MIN=100000
 
 # Customize to your needs...
-alias ll="ls -al --color"
+alias ll="ls -al"
 alias co="git checkout"
 alias nb="git checkout -b"
 alias gg="git gui"
