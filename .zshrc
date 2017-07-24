@@ -36,6 +36,7 @@ export PATH=$PATH:$HOME/Development/android-sdk-macosx/tools:$HOME/Development/a
 export PATH=$PATH:/opt/eclipse
 export PATH=$PATH:$HOME/.lein
 export PATH=$PATH:/opt/RubyMine-7.1/bin
+export PATH=$PATH:/opt/apache-maven-2.2.1/bin
 export PATH=/usr/local/bin:$PATH:.
 
 export DEFAULT_USER=`whoami`
