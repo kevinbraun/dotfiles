@@ -24,22 +24,19 @@
   [[default]]
     allow_bold = False
     background_color = "#002b36"
-    background_image = None
     copy_on_selection = True
     cursor_color = "#eee8d5"
-    font = Fira Mono for Powerline 11
+    font = Menlo for Powerline 11
     foreground_color = "#eee8d5"
     login_shell = True
     palette = "#073642:#dc322f:#859900:#b58900:#268bd2:#d33682:#2aa198:#eee8d5:#002b36:#cb4b16:#586e75:#657b83:#839496:#6c71c4:#93a1a1:#fdf6e3"
     scrollback_lines = 8192
     use_system_font = False
   [[darkish]]
-    background_image = None
     font = Menlo for Powerline 9
     use_system_font = False
   [[solarized-light]]
     background_color = "#eee8d5"
-    background_image = None
     cursor_color = "#002b36"
     foreground_color = "#002b36"
     palette = "#073642:#dc322f:#859900:#b58900:#268bd2:#d33682:#2aa198:#eee8d5:#002b36:#cb4b16:#586e75:#657b83:#839496:#6c71c4:#93a1a1:#fdf6e3"
