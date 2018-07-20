@@ -82,6 +82,11 @@ alias run_omnibus="cd ~/workspace/omnibus-web-services ; mvn jetty:run -Djava.li
 alias run_omnibus_tests="cd ~/workspace/omnius-web-services ; mvn test -Djava.library.path=$ORACLE_HOME/lib -Doracle.net.tns_admin=$TNS_ADMIN"
 alias run_utopia="cd ~/workspace/utopia ; ./run.sh"
 
+# NVM for NodeJS
+export NVM_DIR="$HOME/.nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh" # This loads nvm
+
 [[ -s "$HOME/.rvm/scripts/rvm" ]] && source "$HOME/.rvm/scripts/rvm"
 
 PATH=$PATH:$HOME/.rvm/bin # Add RVM to PATH for scripting
+
