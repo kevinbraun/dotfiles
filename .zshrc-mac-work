@@ -26,17 +26,19 @@ ZSH_THEME="agnoster-kb-rvm"
 
 # Which plugins would you like to load? (plugins can be found in ~/.oh-my-zsh/plugins/*)
 # Example format: plugins=(rails git textmate ruby lighthouse)
-plugins=(git zsh-syntax-highlighting)
+plugins=(git zsh-syntax-highlighting zsh-autosuggestions)
 
 # Oracle stuff
 export ORACLE_HOME=/Library/Oracle
 export OCI_DIR=$ORACLE_HOME/instantclient_12_2 
-export TNS_ADMIN=$ORACLE_HOME/instantclient_12_2/network/admin 
+export TNS_ADMIN=$ORACLE_HOME/instantclient_12_2/network/admin
+export TNSADMIN=$TNS_ADMIN
 export CLASSPATH=$CLASSPATH:$ORACLE_HOME
 
 
 source $ZSH/oh-my-zsh.sh
 export PATH=$PATH:$HOME/Library/Android/sdk/platform-tools:$HOME/Library/Android/sdk/tools
+export PATH=$PATH:$HOME/Development/flutter/bin
 export PATH=$PATH:/usr/local/share/npm/bin
 export PATH=$PATH:/opt/eclipse
 export PATH=$PATH:$HOME/.lein
@@ -44,11 +46,14 @@ export PATH=$PATH:/opt/RubyMine-7.1/bin
 export PATH=$PATH:/opt/apache-maven-2.2.1/bin
 export PATH=$PATH:$HOME/apps/apache-jmeter/bin
 export PATH=$PATH:/usr/local/opt/qt/bin
+export PATH=$PATH:$HOME/Development/Qt5.5.0/5.5/clang_64/bin
 export PATH=$PATH:$ORACLE_HOME/instantclient_12_2
 export PATH=/usr/local/sbin:$PATH
 export PATH=/usr/local/bin:$PATH:.
 
 export DEFAULT_USER=`whoami`
+
+export REACT_EDITOR=code
 
 # ruby GC tuning
 RUBY_HEAP_MIN_SLOTS=600000 
@@ -59,8 +64,10 @@ RUBY_FREE_MIN=100000
 alias ll="ls -alG"
 alias co="git checkout"
 alias nb="git checkout -b"
-alias gg="gitx"
-alias gk="gitx"
+#alias gg="gitx --all ."
+#alias gk="gitx --all ."
+alias gg="git gui"
+alias gk="gitk --all"
 alias gst="git status -s"
 alias sd="passenger start"
 alias parrot="rake parallel:prepare parallel:spec"
@@ -74,10 +81,15 @@ alias pms="rake db:purge db:migrate && rake db:seed"
 alias pmsc="rake db:purge db:migrate && rake db:seed && rake import:canon"
 alias empms="rake app:db:purge app:db:migrate && rake app:db:seed"
 
+alias megayarn="yarn run project:setup"
+
+alias msgviewer="java -jar /Users/kevin/Applications/MSGViewer-1.9/MSGViewer.jar"
+
 alias skip-time-reporting-tests="rename 's/\.rb/\.rbnope/' ~/workspace/intraop/spec/time_reporting/*"
 alias add-time-reporting-tests="rename 's/\.rbnope/\.rb/' ~/workspace/intraop/spec/time_reporting/*"
 
 #alias sqlplus="sqlplus64"
+alias sqlplus="rlwrap -i sqlplus"
 
 alias sublhere="subl . -n &"
 
@@ -89,6 +101,9 @@ alias clean_omnibus="rm -rf /tmp/omnibus"
 alias run_omnibus="cd ~/workspace/omnibus-web-services ; mvn jetty:run -Djava.library.path=$ORACLE_HOME/lib -Doracle.net.tns_admin=$TNS_ADMIN ; clean_omnibus"
 alias run_omnibus_tests="cd ~/workspace/omnius-web-services ; mvn test -Djava.library.path=$ORACLE_HOME/lib -Doracle.net.tns_admin=$TNS_ADMIN"
 alias run_utopia="cd ~/workspace/utopia ; ./run.sh"
+
+export PATH="$HOME/.jenv/bin:$PATH"
+eval "$(jenv init -)"
 
 # NVM for NodeJS
 export NVM_DIR="$HOME/.nvm"
