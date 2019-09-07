@@ -26,13 +26,17 @@ ZSH_THEME="agnoster-kb-rvm"
 
 # Which plugins would you like to load? (plugins can be found in ~/.oh-my-zsh/plugins/*)
 # Example format: plugins=(rails git textmate ruby lighthouse)
-plugins=(git zsh-syntax-highlighting)
+plugins=(git zsh-syntax-highlighting zsh-autosuggestions)
+
+ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE='fg=23'
+
 
 source $ZSH/oh-my-zsh.sh
 export PATH=$PATH:/opt/android-sdk/platform-tools:/opt/android-sdk/tools
 export PATH=$PATH:$HOME/Android/Sdk/platform-tools:$HOME/Android/Sdk/tools
 export PATH=$PATH:/usr/local/share/npm/bin
 export PATH=$PATH:$HOME/Development/android-sdk-macosx/tools:$HOME/Development/android-sdk-macosx/platform-tools
+export PATH=$PATH:$HOME/Development/flutter/bin
 export PATH=$PATH:/opt/eclipse
 export PATH=$PATH:$HOME/.lein
 export PATH=$PATH:/opt/RubyMine-7.1/bin
@@ -82,11 +86,10 @@ alias run_omnibus="cd ~/workspace/omnibus-web-services ; mvn jetty:run -Djava.li
 alias run_omnibus_tests="cd ~/workspace/omnius-web-services ; mvn test -Djava.library.path=$ORACLE_HOME/lib -Doracle.net.tns_admin=$TNS_ADMIN"
 alias run_utopia="cd ~/workspace/utopia ; ./run.sh"
 
-# NVM for NodeJS
-export NVM_DIR="$HOME/.nvm"
-[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh" # This loads nvm
-
 [[ -s "$HOME/.rvm/scripts/rvm" ]] && source "$HOME/.rvm/scripts/rvm"
 
 PATH=$PATH:$HOME/.rvm/bin # Add RVM to PATH for scripting
 
+export NVM_DIR="$HOME/.nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
+[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
