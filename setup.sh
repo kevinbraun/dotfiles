@@ -2,32 +2,15 @@
 WORKING_DIR=$(pwd)
 echo "Working out of $WORKING_DIR..."
 
-# symlinks and folders in root home dir
-for dotfile in .zshrc .bashrc .oh-my-zsh .oh-my-zsh-custom; do
-  if [ ! -L $HOME/$dotfile ]; then
-    if [ -f $HOME/$dotfile ]; then
-      echo "Backing up $dotfile..."
-      mv -v $HOME/$dotfile $HOME/$dotfile-bak
-    fi
+# install dependencies
+sudo apt install vim terminator htop git gitk git-gui wget curl gnupg2 zsh
 
-    ln -s -v $WORKING_DIR/$dotfile $HOME/$dotfile
-  else
-    echo "Skipping $dotfile, already a symlink..."
-  fi
-done
+# install RVM and nvm
+gpg2 --recv-keys 409B6B1796C275462A1703113804BB82D39DC0E3 7D2BAF1CF37B13E2069D6956105BD0E739499BDB
+\curl -sSL https://get.rvm.io | bash -s stable
+curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.35.1/install.sh | bash
 
-# applications in .config/
-for app in terminator; do
-  CONFIG_DIR=$HOME/.config/$app
+# change the default shell
+chsh -s /bin/zsh
 
-  if [ ! -L $CONFIG_DIR ]; then
-    if [ -d $CONFIG_DIR ]; then
-      echo "Backing up $app..."
-      mv -v $CONFIG_DIR $CONFIG_DIR-bak
-    fi
-
-    ln -s -v $WORKING_DIR/$app $CONFIG_DIR
-  else
-    echo "Skipping $app, already a symlink..."
-  fi
-done
+./setup-symlinks.sh
