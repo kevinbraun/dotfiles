@@ -77,7 +77,7 @@ alias sqlplus="sqlplus64"
 
 alias sublhere="subl . -n &"
 
-alias npm-exec="PATH=$(npm bin):$PATH"
+#alias npm-exec="PATH=$(npm bin):$PATH"
 
 alias files="nautilus . &"
 
