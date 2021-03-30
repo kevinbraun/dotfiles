@@ -112,7 +112,7 @@ prompt_status() {
 build_left_prompt() {
   RETVAL=$?
   prompt_status
-  # prompt_context
+  prompt_context
   prompt_rvm
   prompt_git
   prompt_end

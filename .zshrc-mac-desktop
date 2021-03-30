@@ -40,7 +40,10 @@ export CLASSPATH=$CLASSPATH:$ORACLE_HOME
 #export CPPFLAGS="-I/usr/local/opt/openssl@1.1/include"
 #export PKG_CONFIG_PATH="/usr/local/opt/openssl@1.1/lib/pkgconfig"
 
-export ANDROID_HOME=$HOME/Library/Android/sdk
+# some paths we need for Android and Java and stuff
+#export JAVA_HOME=/Library/Java/JavaVirtualMachines/openjdk.jdk/Contents/Home
+export JAVA_HOME=/Library/Java/JavaVirtualMachines/adoptopenjdk-8.jdk/Contents/Home
+export ANDROID_HOME=/Users/kevin/Library/Android/sdk 
 
 source $ZSH/oh-my-zsh.sh
 export PATH=$PATH:$HOME/Library/Android/sdk/platform-tools
