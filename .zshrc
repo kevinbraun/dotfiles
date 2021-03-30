@@ -28,35 +28,45 @@ ZSH_THEME="agnoster-kb-rvm"
 # Example format: plugins=(rails git textmate ruby lighthouse)
 plugins=(git zsh-syntax-highlighting zsh-autosuggestions)
 
-ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE='fg=23'
+# Oracle stuff
+export ORACLE_HOME=/Library/Oracle
+export OCI_DIR=$ORACLE_HOME/instantclient_12_2
+export TNS_ADMIN=$ORACLE_HOME/instantclient_12_2/network/admin
+export TNSADMIN=$TNS_ADMIN
+export CLASSPATH=$CLASSPATH:$ORACLE_HOME
 
+# openssl stuff for ruby
+#export LDFLAGS="-L/usr/local/opt/openssl@1.1/lib"
+#export CPPFLAGS="-I/usr/local/opt/openssl@1.1/include"
+#export PKG_CONFIG_PATH="/usr/local/opt/openssl@1.1/lib/pkgconfig"
+
+export ANDROID_HOME=$HOME/Library/Android/sdk
 
 source $ZSH/oh-my-zsh.sh
-export PATH=$PATH:/opt/android-sdk/platform-tools:/opt/android-sdk/tools
-export PATH=$PATH:$HOME/Android/Sdk/platform-tools:$HOME/Android/Sdk/tools
-export PATH=$PATH:/usr/local/share/npm/bin
-export PATH=$PATH:$HOME/Development/android-sdk-macosx/tools:$HOME/Development/android-sdk-macosx/platform-tools
+export PATH=$PATH:$HOME/Library/Android/sdk/platform-tools
+export PATH=$PATH:$HOME/Library/Android/sdk/emulator
+export PATH=$PATH:$ORACLE_HOME/instantclient_12_2
 export PATH=$PATH:$HOME/Development/flutter/bin
-export PATH=$PATH:/opt/eclipse
-export PATH=$PATH:$HOME/.lein
-export PATH=$PATH:/opt/RubyMine-7.1/bin
-export PATH=$PATH:/opt/apache-maven-2.2.1/bin
-export PATH=$PATH:$HOME/apps/apache-jmeter/bin
+export PATH=$PATH:/usr/local/share/npm/bin
+export PATH=$PATH:/usr/local/opt/qt/bin
+export PATH=$PATH:$JAVA_HOME/bin
+export PATH=/usr/local/sbin:$PATH
 export PATH=/usr/local/bin:$PATH:.
 
 export DEFAULT_USER=`whoami`
 
 # ruby GC tuning
-RUBY_HEAP_MIN_SLOTS=600000 
+RUBY_HEAP_MIN_SLOTS=600000
 RUBY_GC_MALLOC_LIMIT=59000000
 RUBY_FREE_MIN=100000
 
 # Customize to your needs...
-alias ll="ls -al --color"
+alias ll="ls -alG"
 alias co="git checkout"
 alias nb="git checkout -b"
 alias gg="git gui"
 alias gk="gitk --all"
+alias gx="gitx"
 alias gst="git status -s"
 alias sd="passenger start"
 alias parrot="rake parallel:prepare parallel:spec"
@@ -69,27 +79,24 @@ alias be="bundle exec"
 alias pms="rake db:purge db:migrate && rake db:seed"
 alias pmsc="rake db:purge db:migrate && rake db:seed && rake import:canon"
 alias empms="rake app:db:purge app:db:migrate && rake app:db:seed"
-
-alias skip-time-reporting-tests="rename 's/\.rb/\.rbnope/' ~/workspace/intraop/spec/time_reporting/*"
-alias add-time-reporting-tests="rename 's/\.rbnope/\.rb/' ~/workspace/intraop/spec/time_reporting/*"
-
-alias sqlplus="sqlplus64"
+alias rake='noglob rake'
+alias expouat='API_HOST=https://demo.winnipegtransit.com expo start'
 
 alias sublhere="subl . -n &"
 
-#alias npm-exec="PATH=$(npm bin):$PATH"
+alias mountefi="~/hackintosh/MountEFI/MountEFI.command"
 
-alias files="nautilus . &"
+# jenv for Java
+export PATH="$HOME/.jenv/bin:$PATH"
+eval "$(jenv init -)"
 
-alias clean_omnibus="rm -rf /tmp/omnibus"
-alias run_omnibus="cd ~/workspace/omnibus-web-services ; mvn jetty:run -Djava.library.path=$ORACLE_HOME/lib -Doracle.net.tns_admin=$TNS_ADMIN ; clean_omnibus"
-alias run_omnibus_tests="cd ~/workspace/omnius-web-services ; mvn test -Djava.library.path=$ORACLE_HOME/lib -Doracle.net.tns_admin=$TNS_ADMIN"
-alias run_utopia="cd ~/workspace/utopia ; ./run.sh"
+export JAVA_HOME="$HOME/.jenv/versions/1.8"
+export PATH="$PATH:$JAVA_HOME/bin"
+
+# NVM for NodeJS
+export NVM_DIR="$HOME/.nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh" # This loads nvm
 
 [[ -s "$HOME/.rvm/scripts/rvm" ]] && source "$HOME/.rvm/scripts/rvm"
 
 PATH=$PATH:$HOME/.rvm/bin # Add RVM to PATH for scripting
-
-export NVM_DIR="$HOME/.nvm"
-[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
-[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
