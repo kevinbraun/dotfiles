@@ -49,6 +49,7 @@ export PATH=$PATH:$ORACLE_HOME/instantclient_12_2
 export PATH=$PATH:$HOME/Development/flutter/bin
 export PATH=$PATH:/usr/local/share/npm/bin
 export PATH=$PATH:/usr/local/opt/qt/bin
+export PATH=$PATH:/usr/local/opt/libpq/bin
 export PATH=$PATH:$JAVA_HOME/bin
 export PATH=/usr/local/sbin:$PATH
 export PATH=/usr/local/bin:$PATH:.
@@ -80,7 +81,9 @@ alias pms="rake db:purge db:migrate && rake db:seed"
 alias pmsc="rake db:purge db:migrate && rake db:seed && rake import:canon"
 alias empms="rake app:db:purge app:db:migrate && rake app:db:seed"
 alias rake='noglob rake'
-alias expouat='API_HOST=https://demo.winnipegtransit.com expo start'
+alias expouat='CABLE_URL=wss://demo.winnipegtransit.com/cable API_HOST=https://demo.winnipegtransit.com expo start'
+alias publishkev='REACT_APP_ENV=uat expo publish --release-channel kevintest'
+alias webnginx='docker run -it --rm -p 8080:80 -v $(pwd)/web-build:/usr/share/nginx/html -v $(pwd)/nginx.conf:/etc/nginx/nginx.conf:ro nginx'
 
 alias sublhere="subl . -n &"
 
