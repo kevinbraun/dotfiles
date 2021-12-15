@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>customSites</key>
+	<dict>
+		<key>1232F099-1922-495F-928C-B1027BB059DA</key>
+		<dict>
+			<key>enabled</key>
+			<true/>
+			<key>keyword</key>
+			<string>wiki</string>
+			<key>text</key>
+			<string>Transit Wiki Search - {query}</string>
+			<key>url</key>
+			<string>http://wiki/index.php?search={query}</string>
+			<key>utf8</key>
+			<true/>
+		</dict>
+		<key>695F89E1-0BDA-4FAB-832A-18DA2F2183A3</key>
+		<dict>
+			<key>enabled</key>
+			<true/>
+			<key>keyword</key>
+			<string>git</string>
+			<key>text</key>
+			<string>Transit Git for {query}</string>
+			<key>url</key>
+			<string>http://git/?q={query}</string>
+			<key>utf8</key>
+			<true/>
+		</dict>
+	</dict>
+</dict>
+</plist>

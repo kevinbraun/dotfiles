@@ -7,7 +7,7 @@ ZSH_CUSTOM=$HOME/.oh-my-zsh-custom
 # Optionally, if you set this to "random", it'll load a random theme each
 # time that oh-my-zsh is loaded.
 #ZSH_THEME="wezm"
-ZSH_THEME="agnoster-kb-rvm"
+ZSH_THEME="agnoster-kb"
 
 # Set to this to use case-sensitive completion
 # CASE_SENSITIVE="true"
@@ -41,6 +41,7 @@ export CLASSPATH=$CLASSPATH:$ORACLE_HOME
 #export PKG_CONFIG_PATH="/usr/local/opt/openssl@1.1/lib/pkgconfig"
 
 export ANDROID_HOME=$HOME/Library/Android/sdk
+export ANDROID_NDK_HOME=$ANDROID_HOME/ndk/23.1.7779620
 
 source $ZSH/oh-my-zsh.sh
 export PATH=$PATH:$HOME/Library/Android/sdk/platform-tools
@@ -61,8 +62,18 @@ RUBY_HEAP_MIN_SLOTS=600000
 RUBY_GC_MALLOC_LIMIT=59000000
 RUBY_FREE_MIN=100000
 
+# Monterray Typhoeus forking fix:
+export OBJC_DISABLE_INITIALIZE_FORK_SAFETY=YES
+
 # Customize to your needs...
-alias ll="ls -alG"
+
+#alias ll="ls -alG"
+alias ls="lsd"
+alias ll="lsd -al --group-dirs=first"
+alias lt="lsd --tree --depth=2"
+alias ocat='cat'
+alias cat='bat --paging=never'
+
 alias co="git checkout"
 alias nb="git checkout -b"
 alias gg="git gui"
@@ -81,9 +92,17 @@ alias pms="rake db:purge db:migrate && rake db:seed"
 alias pmsc="rake db:purge db:migrate && rake db:seed && rake import:canon"
 alias empms="rake app:db:purge app:db:migrate && rake app:db:seed"
 alias rake='noglob rake'
-alias expouat='CABLE_URL=wss://demo.winnipegtransit.com/cable API_HOST=https://demo.winnipegtransit.com expo start'
+alias expouat='CABLE_URL=wss://app-test.winnipegtransit.com/cable API_HOST=https://app-test.winnipegtransit.com expo start'
+alias expoprod='CABLE_URL=wss://app.winnipegtransit.com/cable API_HOST=https://app.winnipegtransit.com expo start'
 alias publishkev='REACT_APP_ENV=uat expo publish --release-channel kevintest'
 alias webnginx='docker run -it --rm -p 8080:80 -v $(pwd)/web-build:/usr/share/nginx/html -v $(pwd)/nginx.conf:/etc/nginx/nginx.conf:ro nginx'
+alias jest='yarn test'
+
+alias i="arch -x86_64"
+alias a="arch -arm64"
+alias izsh="arch -x86_64 zsh"
+alias brew="/usr/local/bin/brew"
+alias abrew="/opt/homebrew/bin/brew"
 
 alias sublhere="subl . -n &"
 
@@ -100,6 +119,10 @@ export PATH="$PATH:$JAVA_HOME/bin"
 export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh" # This loads nvm
 
-[[ -s "$HOME/.rvm/scripts/rvm" ]] && source "$HOME/.rvm/scripts/rvm"
+# [[ -s "$HOME/.rvm/scripts/rvm" ]] && source "$HOME/.rvm/scripts/rvm"
+# PATH=$PATH:$HOME/.rvm/bin # Add RVM to PATH for scripting
 
-PATH=$PATH:$HOME/.rvm/bin # Add RVM to PATH for scripting
+# rbenv
+eval "$(rbenv init - zsh)"
+
+[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion

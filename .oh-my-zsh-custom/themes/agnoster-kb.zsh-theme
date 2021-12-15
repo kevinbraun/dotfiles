@@ -83,15 +83,22 @@ prompt_git() {
   fi
 }
 
+# actually using rbenv now?  Whatever.
 prompt_rvm() {
-  local rvm=`rvm-prompt`
-  prompt_segment black green "$rvm"
+  # local rvm=`rvm-prompt`
+  local rbenv=`rbenv version | sed -e "s/ (set.*$//"`
+  prompt_segment black green "ruby-$rbenv"
 }
 
 # Dir: current working directory
 prompt_dir() {
 	echo -n "%{%F{black}%}$R_SEGMENT_SEPARATOR"
   prompt_segment black blue '%~'
+}
+
+prompt_arch() {
+  local arch=`arch`
+  prompt_segment black red "$arch"
 }
 
 # Status:
@@ -113,6 +120,7 @@ build_left_prompt() {
   RETVAL=$?
   prompt_status
   prompt_context
+  prompt_arch
   prompt_rvm
   prompt_git
   prompt_end
